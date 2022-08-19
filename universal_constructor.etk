@@ -1,0 +1,20 @@
+# set up storage here
+
+# universal constructor - 600b8038035981835939f3
+
+%push(runtimeBytecode) # %push(label) will push the pc of the label startpoint [start]
+
+dup1 # [start, start]
+codesize # [codesize, start, start]
+sub # [lengthRun, start]
+
+msize # [0, lengthRun, start]
+dup2 # [lengthRun, 0, lengthRun, start]
+dup4 # [start, lengthRun, 0, lengthRun, start]
+
+msize
+codecopy #[0, start, lengthRun, 0, lengthRun, start]
+return #[0, lengthRun, ...]
+
+runtimeBytecode:
+    # your runtime bytecode
